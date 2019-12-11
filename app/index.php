@@ -29,6 +29,8 @@ if(empty($user)){
 
 ?>
 
+ <?php if($time_first == 0):?>
+<!-- Usuarios logeados por primera vez -->
 <!doctype html>
 <html lang="en">
   <head>
@@ -38,7 +40,7 @@ if(empty($user)){
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Cover Template for Bootstrap</title>
+    <title>Welcome</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -47,7 +49,7 @@ if(empty($user)){
     <link href="css/style.css" rel="stylesheet">
   </head>
 
-  <?php if($time_first == 0):?>
+
   <body class="text-center">
 
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
@@ -92,52 +94,63 @@ if(empty($user)){
     <script src="../../../../assets/js/vendor/popper.min.js"></script>
     <script src="../../../../dist/js/bootstrap.min.js"></script>
   </body>
+  </html>
+
 
   <?php else:?>
 
-    <body class="text-center">
+    
+    <!-- Usuarios logeados por mas de primera vez -->
 
-<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-  <header class="masthead mb-auto">
-    <div class="inner">
-      <h3 class="masthead-brand">WebApp Agenda</h3>
-<ul class="nav justify-content-end">
+  <!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>TasksBoards</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body>
+      
+      <ul class="nav justify-content-end">
   <li class="nav-item">
-  <a class="nav-link disabled" href="../">Home</a>
+    <a class="nav-link disabled" href="../">Home</a>
   </li>
   <li class="nav-item">
-  <a class="nav-link " href="user_information/">Hi, <?= $username?></a>
+    <a class="nav-link " href="user_information/"><?= $username?></a>
   </li>
   <li class="nav-item">
-  <a class="nav-link" href="../logout.php">Logout</a>
-   </li>
-</ul> 
+    <a class="nav-link" href="../logout.php">Logout</a>
+  </li>
+
+</ul>
+<br>
+      <br>
+    <div class="container ">
+      <div class="jumbotron mt-3">
+        <h1>Welcome <?= $name?> <?= $lastname?> to your TasksBoards ;)</h1>
+        <p class="lead">
+    <b class="">It's good to see you here. Now you can add and see your tasks.</p>
+        <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">View my tasks &raquo;</a>
+      </div>
     </div>
-  </header>
-
-  <main role="main" class="inner cover">
-    <h1 class="cover-heading">Hi <?= $name?> <?= $lastname?>, is good look you </h1>
-    <p class="lead">Bienvenido de nuevo a tu agenda personal. WebApp Agenda te ayudara a organizar tu tiempo</p>
-    <p class="lead">
-      <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-    </p>
-  </main>
-
-  <footer class="mastfoot mt-auto">
-    <div class="inner">
-      <p>sitio creado by Isaac Martinez.</p>
-    </div>
-  </footer>
-</div>
 
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="../../../../assets/js/vendor/popper.min.js"></script>
-<script src="../../../../dist/js/bootstrap.min.js"></script>
-</body>
-<?php endif?>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../../../dist/js/bootstrap.min.js"></script>
+  </body>
 </html>
+
+<?php endif?>
