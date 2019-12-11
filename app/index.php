@@ -5,7 +5,7 @@ session_start();
 require '../database.php';
 
 if (isset($_SESSION['user_id'])) {
-    $records = $conn->prepare('SELECT id, name, lastname, user, email, password FROM users WHERE id = :id');
+    $records = $conn->prepare('SELECT id, name, lastname, user, email, password, first_time FROM users WHERE id = :id');
     $records->bindParam(':id', $_SESSION['user_id']);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
@@ -19,6 +19,7 @@ if (isset($_SESSION['user_id'])) {
         $emaild = $results['email'];
         $name = $results['name'];
         $lastname = $results['lastname'];
+        $time_first = $results['first_time'];
     }
 }
 
@@ -46,32 +47,32 @@ if(empty($user)){
     <link href="css/style.css" rel="stylesheet">
   </head>
 
+  <?php if($time_first == 0):?>
   <body class="text-center">
 
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
           <h3 class="masthead-brand">WebApp Agenda</h3>
-          <ul class="nav justify-content-end">
-  <li class="nav-item">
-    <a class="nav-link disabled" href="../">Home</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link " href="user_information/"><?= $username?></a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="../logout.php">Logout</a>
-  </li>
-
-</ul>
+    <ul class="nav justify-content-end">
+      <li class="nav-item">
+      <a class="nav-link disabled" href="../">Home</a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link " href="user_information/">Hi, <?= $username?></a>
+      </li>
+      <li class="nav-item">
+      <a class="nav-link" href="../logout.php">Logout</a>
+       </li>
+    </ul> 
         </div>
       </header>
 
       <main role="main" class="inner cover">
-        <h1 class="cover-heading">Hi, <?= $name?> <?= $lastname?> is good look you </h1>
+        <h1 class="cover-heading">Hi <?= $name?> <?= $lastname?>, is good look you </h1>
         <p class="lead">Bienvenido a tu agenda personal. WebApp Agenda te ayudara a organizar tu tiempo</p>
         <p class="lead">
-          <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+          <a href="set.php" class="btn btn-lg btn-secondary">Start</a>
         </p>
       </main>
 
@@ -91,4 +92,52 @@ if(empty($user)){
     <script src="../../../../assets/js/vendor/popper.min.js"></script>
     <script src="../../../../dist/js/bootstrap.min.js"></script>
   </body>
+
+  <?php else:?>
+
+    <body class="text-center">
+
+<div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+  <header class="masthead mb-auto">
+    <div class="inner">
+      <h3 class="masthead-brand">WebApp Agenda</h3>
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+  <a class="nav-link disabled" href="../">Home</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link " href="user_information/">Hi, <?= $username?></a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="../logout.php">Logout</a>
+   </li>
+</ul> 
+    </div>
+  </header>
+
+  <main role="main" class="inner cover">
+    <h1 class="cover-heading">Hi <?= $name?> <?= $lastname?>, is good look you </h1>
+    <p class="lead">Bienvenido de nuevo a tu agenda personal. WebApp Agenda te ayudara a organizar tu tiempo</p>
+    <p class="lead">
+      <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+    </p>
+  </main>
+
+  <footer class="mastfoot mt-auto">
+    <div class="inner">
+      <p>sitio creado by Isaac Martinez.</p>
+    </div>
+  </footer>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="../../../../assets/js/vendor/popper.min.js"></script>
+<script src="../../../../dist/js/bootstrap.min.js"></script>
+</body>
+<?php endif?>
 </html>

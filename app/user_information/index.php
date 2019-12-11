@@ -5,13 +5,13 @@ session_start();
 require '../../database.php';
 
 if (isset($_SESSION['user_id'])) {
-    $records = $conn->prepare('SELECT id, name, lastname, user, email, password, fecha_creacion FROM users WHERE id = :id');
+    $records = $conn->prepare('SELECT id, name, lastname, user, email, password, fecha_creacion, first_time FROM users WHERE id = :id');
     $records->bindParam(':id', $_SESSION['user_id']);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
 
     $user = null;
-  
+    
 
     if(!empty($results)){
         $user = $results;
@@ -20,6 +20,8 @@ if (isset($_SESSION['user_id'])) {
         $name = $results['name'];
         $lastname = $results['lastname'];
         $fecha_created = $results['fecha_creacion'];
+        $time_first = $results['first_time'];
+        $
     }
 }
 

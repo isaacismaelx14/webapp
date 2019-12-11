@@ -67,6 +67,7 @@
       
         <div class="col-md-8 order-md-1">
           <h4 class="mb-3">User Information</h4>
+         
           <form class="needs-validation" action="index.php" method="post">
             <div class="row">
               <div class="col-md-6 mb-3">
@@ -126,11 +127,11 @@
            
             <hr class="mb-4">
             <button class="btn btn-primary btn-lg btn-block" type="submit" action="signup.php">Continue to signup</button>
+            <span class="mb-3">*I already have an account and I want <a href="../login/">login</a></spanp>
           </form>
+
         </div>
       </div>
-
-     
 
       <footer class="my-5 pt-5 text-muted text-center text-small">
         <p class="mb-1">&copy; 2019-2020 Isaac's Code</p>

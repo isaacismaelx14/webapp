@@ -56,7 +56,7 @@ if (isset($_SESSION['user_id'])) {
     <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="signin.css" rel="stylesheet">
+    <link href="../resources/css/styles.css" rel="stylesheet">
   </head>
 
   <body class="text-center">
@@ -85,6 +85,7 @@ if (isset($_SESSION['user_id'])) {
         </label>
       </div>
       <button class="btn btn-lg btn-primary btn-block" type="submit" value="Send">Login</button>
+      <p>*I do no have account I want to <a href="../signup/">signup</a></p> 
       <p class="mt-5 mb-3 text-muted">&copy; 2019-2020</p>
     </form>
   </body>
