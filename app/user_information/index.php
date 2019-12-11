@@ -2,10 +2,10 @@
 
 session_start();
 
-require '../database.php';
+require '../../database.php';
 
 if (isset($_SESSION['user_id'])) {
-    $records = $conn->prepare('SELECT id, name, lastname, user, email, password FROM users WHERE id = :id');
+    $records = $conn->prepare('SELECT id, name, lastname, user, email, password, fecha_creacion FROM users WHERE id = :id');
     $records->bindParam(':id', $_SESSION['user_id']);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
@@ -19,15 +19,15 @@ if (isset($_SESSION['user_id'])) {
         $emaild = $results['email'];
         $name = $results['name'];
         $lastname = $results['lastname'];
+        $fecha_created = $results['fecha_creacion'];
     }
 }
 
 if(empty($user)){
-    header('Location: ../');
+    header('Location: ../../');
 }
 
 ?>
-
 <!doctype html>
 <html lang="en">
   <head>
@@ -37,49 +37,40 @@ if(empty($user)){
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Cover Template for Bootstrap</title>
+    <title><?= $username?> information</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
   </head>
 
-  <body class="text-center">
-
-    <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
-      <header class="masthead mb-auto">
-        <div class="inner">
-          <h3 class="masthead-brand">WebApp Agenda</h3>
-          <ul class="nav justify-content-end">
+  <body>
+      
+      <ul class="nav justify-content-end">
   <li class="nav-item">
-    <a class="nav-link disabled" href="../">Home</a>
+    <a class="nav-link active" href="../">Home</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link " href="user_information/"><?= $username?></a>
+    <a class="nav-link disabled" href="#"><?= $username?></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="../logout.php">Logout</a>
+    <a class="nav-link" href="../../logout.php">Logout</a>
   </li>
 
 </ul>
-        </div>
-      </header>
-
-      <main role="main" class="inner cover">
-        <h1 class="cover-heading">Hi, <?= $name?> <?= $lastname?> is good look you </h1>
-        <p class="lead">Bienvenido a tu agenda personal. WebApp Agenda te ayudara a organizar tu tiempo</p>
+<br>
+      <br>
+    <div class="container ">
+      <div class="jumbotron mt-3">
+        <h1>User information</h1>
         <p class="lead">
-          <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-        </p>
-      </main>
-
-      <footer class="mastfoot mt-auto">
-        <div class="inner">
-          <p>sitio creado by Isaac Martinez.</p>
-        </div>
-      </footer>
+    <b class="text-success">Name: </b><?= $name?><br>
+    <b class="text-success">Lastname: </b><?= $lastname?> <br>
+    <b class="text-success">Username: </b><?= $username?><br>
+    <b class="text-success">Email: </b><?= $emaild?></p>
+    <br>
+    <p class="lead"><b class="text-success">User creation date: </b> <?= $fecha_created?></p>
+        <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">View navbar docs &raquo;</a>
+      </div>
     </div>
 
 
