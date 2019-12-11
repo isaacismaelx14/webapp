@@ -59,7 +59,12 @@
         </div>
        <?php endif?>
 
-      <h1 >Web App</h1>
+       <style>
+       .tittle{
+          font-family:  impact;
+       }
+       </style>
+      <h1 class="tittle" >Time Smart</h1>
       <h1 class="h3 mb-3 font-weight-normal">Registro</h1>
       
       <label for="inputUser" class="sr-only">User</label>

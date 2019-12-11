@@ -49,7 +49,7 @@ if (isset($_SESSION['user_id'])) {
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet"> 
     <title>Login Webapp</title>
 
     <!-- Bootstrap core CSS -->
@@ -68,7 +68,12 @@ if (isset($_SESSION['user_id'])) {
         </div>
        <?php endif?>
 
-      <h1 >Web App</h1>
+       <style>
+       .tittle{
+          font-family:  impact;
+       }
+       </style>
+      <h1 class="tittle" >Time Smart</h1>
       <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
       <label for="inputEmail" class="sr-only">User</label>
       <input type="text" id="inputEmail" name="user" class="form-control" placeholder="user" required autofocus>

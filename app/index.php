@@ -5,7 +5,7 @@ session_start();
 require '../database.php';
 
 if (isset($_SESSION['user_id'])) {
-    $records = $conn->prepare('SELECT id, user, email, password FROM users WHERE id = :id');
+    $records = $conn->prepare('SELECT id, name, lastname, user, email, password FROM users WHERE id = :id');
     $records->bindParam(':id', $_SESSION['user_id']);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
@@ -17,6 +17,8 @@ if (isset($_SESSION['user_id'])) {
         $user = $results;
         $username = $results['user'];
         $emaild = $results['email'];
+        $name = $results['name'];
+        $lastname = $results['lastname'];
     }
 }
 
@@ -57,7 +59,7 @@ if(empty($user)){
       </header>
 
       <main role="main" class="inner cover">
-        <h1 class="cover-heading">Hi, <?= $username?> is good look you </h1>
+        <h1 class="cover-heading">Hi, <?= $name?> <?= $lastname?> is good look you </h1>
         <p class="lead">Bienvenido a tu agenda personal. WebApp Agenda te ayudara a organizar tu tiempo</p>
         <p class="lead">
           <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
@@ -66,7 +68,7 @@ if(empty($user)){
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+          <p>sitio creado by Isaac Martinez.</p>
         </div>
       </footer>
     </div>
