@@ -92,7 +92,7 @@ if(empty($user)){
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../../../dist/js/bootstrap.min.js"></script>
+    <script src="../resources/bootstrap/js/bootstrap.min.js"></script>
   </body>
   </html>
 
@@ -115,6 +115,7 @@ if(empty($user)){
 
     <!-- Bootstrap core CSS -->
     <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/reloj.css">
   </head>
 
   <body>
@@ -140,6 +141,30 @@ if(empty($user)){
     <b class="">It's good to see you here. Now you can add and see your tasks.</p>
         <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">View my tasks &raquo;</a>
       </div>
+      <div class="wrap">
+        <div class="widget">
+          <div class="date">
+            <p id="weekDay" class="weekDay"></p>
+            <p id="day" class="day"></p>
+            <p>de</p>
+            <p id="month" class="month"></p>
+            <p>del</p>
+            <p id="year" class="year"></p>
+          </div>
+          <div class="reloj">
+            <p id="hours" class="hours"></p>
+            <p>:</p>
+            <p id="minute" class="minute"></p>
+            <p>:</p>
+            <div class="second_box">
+              <p id="ampm" class="ampm"></p>
+              <p id="seconds" class="seconds"></p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
     </div>
 
 
@@ -149,7 +174,9 @@ if(empty($user)){
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
     <script src="../../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../../../dist/js/bootstrap.min.js"></script>
+    <script src="../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/fuctions.js"></script>
+
   </body>
 </html>
 

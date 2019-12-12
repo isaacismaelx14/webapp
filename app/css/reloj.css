@@ -1,0 +1,54 @@
+:root{
+    --bg-color: rgba(0, 0, 0, .5);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.wrap{
+    width: 90%;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.widget{
+    width: 40%;
+    margin: 2em;
+   /* margin: 32px;*/
+}
+
+.widget p {
+    display: inline-block;
+    line-height: 1em;
+}
+
+.date{
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 0.3125rem;
+    background: var(--bg-color);
+    padding:20px;
+    width: 100%;
+}
+
+.reloj{
+    width: 100%;
+    padding: 20px;
+    font-size: 4em;
+    text-align: center;
+    background: var(--bg-color);
+}
+
+.reloj .second_box{
+    display: inline-block;
+}
+
+.reloj .seconds, 
+.reloj .ampm{
+    font-size: 2rem;
+    display: block;
+}
