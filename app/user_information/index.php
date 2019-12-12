@@ -1,18 +1,14 @@
 <?php 
 
 session_start();
-
 require '../../database.php';
-
 if (isset($_SESSION['user_id'])) {
     $records = $conn->prepare('SELECT id, name, lastname, user, email, password, fecha_creacion, first_time FROM users WHERE id = :id');
     $records->bindParam(':id', $_SESSION['user_id']);
     $records->execute();
     $results = $records->fetch(PDO::FETCH_ASSOC);
-
     $user = null;
     
-
     if(!empty($results)){
         $user = $results;
         $username = $results['user'];
@@ -21,14 +17,12 @@ if (isset($_SESSION['user_id'])) {
         $lastname = $results['lastname'];
         $fecha_created = $results['fecha_creacion'];
         $time_first = $results['first_time'];
-        $
+        
     }
 }
-
 if(empty($user)){
     header('Location: ../../');
 }
-
 ?>
 <!doctype html>
 <html lang="en">

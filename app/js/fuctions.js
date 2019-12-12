@@ -19,14 +19,13 @@
             pMinute = document.getElementById('minute'),
             pSeconds = document.getElementById('seconds');
 
-        var week = ['Sunday', 'Monday', 'Tuesday', 'Wednesday','Thursday','Friday','Saturday'];
+        var week = ['Domingo', 'Lunes', 'Martes', 'Miercoles','Jueves','Viernes','Sabado'];
         pDayWeek.textContent = week[dayWeek];
 
         pDay.textContent = day;
 
-        var Months = ['January', 'February', 'March', 'April', 'May', 'Jun','July', 'August', 'September', 'November', 'December']
+        var Months = ['Enero','Febrero','Marzo','Abril','Mayo', 'Junio','Julio','Agosto','Septiembre','Octubre','Noviembre', 'Diciembre']
         pMonth.textContent = Months[month];
-
         pYear.textContent= year;
 
         if(hours > 12){

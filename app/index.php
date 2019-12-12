@@ -141,9 +141,9 @@ if(empty($user)){
     <b class="">It's good to see you here. Now you can add and see your tasks.</p>
         <a class="btn btn-lg btn-primary" href="../../components/navbar/" role="button">View my tasks &raquo;</a>
       </div>
-      <div class="wrap">
+      <div class="container d-flex  flex-row-reverse">
         <div class="widget">
-          <div class="date">
+          <div class="date lead jumbotron p-1">
             <p id="weekDay" class="weekDay"></p>
             <p id="day" class="day"></p>
             <p>de</p>
@@ -151,7 +151,7 @@ if(empty($user)){
             <p>del</p>
             <p id="year" class="year"></p>
           </div>
-          <div class="reloj">
+          <div class="reloj ">
             <p id="hours" class="hours"></p>
             <p>:</p>
             <p id="minute" class="minute"></p>
