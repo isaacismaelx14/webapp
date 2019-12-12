@@ -41,18 +41,18 @@ if (isset($_SESSION['user_id'])) {
     <link href="form-validation.css" rel="stylesheet">
   </head>
 
-  <body class="bg-light">
+  <body class="bg-dark text-white">
 
     <div class="container">
       <div class="py-5 text-center">
-        <h2>Signup</h2>
-        <p class="lead">.</p>
+        <h2>Chage data of <?= $username?></h2>
+        <p class="lead"></p>
       </div>
 
       <?php if (!empty($message)):?>
         <div class="alert alert-success text-center" role="alert">
         <?php echo $message?>
-        <a class="btn btn-success" href="../login/" role="button">Iniciar sesión</a>
+        <a class="btn btn-success" href="../login/" role="button">Login</a>
         </div>
        <?php endif?>
 
@@ -61,11 +61,27 @@ if (isset($_SESSION['user_id'])) {
         <?php echo $messageError?>
         </div>
        <?php endif?>
+
+       <div id="alert">
+       </div>
+
+       <script>
+        function comprobarClave(){
+          clave1 = document.f1.password.value
+          clave2 = document.f1.repeat_password.value
+
+              if (clave1 == clave2)
+              alert("Las dos claves son iguales...\nRealizaríamos las acciones del caso positivo")
+              else
+              alert("Las dos claves son distintas...\nRealizaríamos las acciones del caso negativo")
+              }
+        </script>
       
-        <div class="col-md-8 order-md-1">
+        <div class="col-md-8 order-md-1 center">
           <h4 class="mb-3">User Information</h4>
-         
-          <form class="needs-validation" action="index.php" method="post">
+
+          <!-- Form begining-->
+          <form name= "addForm" method="post" class="needs-validation" action="index.php" >
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">First name</label>
@@ -114,7 +130,7 @@ if (isset($_SESSION['user_id'])) {
 
             <div class="mb-3">
               <label for="password">repeat password</label>
-              <input type="password" class="form-control" id="repeat_password"  required>
+              <input type="password" class="form-control" id="repeat_password" name="repeat_password" required>
               <div class="invalid-feedback">
                 Please repeat the password
               </div>
@@ -123,7 +139,7 @@ if (isset($_SESSION['user_id'])) {
 
            
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" action="signup.php">Continue to signup</button>
+            <button class="btn btn-primary btn-lg btn-block" onClick="validar();" type="button">Continue to signup</button>
             <span class="mb-3">*I already have an account and I want <a href="../login/">login</a></spanp>
           </form>
 
@@ -145,9 +161,8 @@ if (isset($_SESSION['user_id'])) {
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../../../dist/js/bootstrap.min.js"></script>
-    <script src="../../../../assets/js/vendor/holder.min.js"></script>
+    <script src="../../../resources/bootstrap/js/bootstrap.min.js"></script>
+    <script src="js/validata.js"></script>
     <script>
       // Example starter JavaScript for disabling form submissions if there are invalid fields
       (function() {
