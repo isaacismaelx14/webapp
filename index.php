@@ -3,6 +3,7 @@
 session_start();
 
 require 'database.php';
+require 'resources/complements/var.php';
 
 if (isset($_SESSION['user_id'])) {
     $records = $conn->prepare('SELECT id, user, email, password FROM users WHERE id = :id');
@@ -51,8 +52,8 @@ if(!empty($user)){
        .tittle{
           font-family:  impact;
        }
-       </style>
-      <h1 class="tittle" >Time Smart</h1>
+       </style> 
+      <h1 class="tittle" ><?= $app_name?></h1>
 
       <a href="login/" class="btn btn-lg btn-primary btn-block">Login</a>
             <p>or</p>

@@ -3,6 +3,7 @@
 session_start();
 
 require '../database.php';
+require '../resources/complements/var.php';
 
 if(!empty($_POST['user']) &&  !empty($_POST['password'])){
   $records = $conn->prepare('SELECT id, user, email, password FROM users WHERE user = :user');
@@ -73,7 +74,7 @@ if (isset($_SESSION['user_id'])) {
           font-family:  impact;
        }
        </style>
-      <h1 class="tittle" >Time Smart</h1>
+      <h1 class="tittle" ><?= $app_name ?></h1>
       <h1 class="h3 mb-3 font-weight-normal">Please login</h1>
       <label for="inputEmail" class="sr-only">User</label>
       <input type="text" id="inputEmail" name="user" class="form-control" placeholder="user" required autofocus>

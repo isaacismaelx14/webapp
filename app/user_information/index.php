@@ -11,12 +11,14 @@ if (isset($_SESSION['user_id'])) {
     
     if(!empty($results)){
         $user = $results;
-        $username = $results['user'];
+        $username = ucwords($results['user']);
         $emaild = $results['email'];
-        $name = $results['name'];
-        $lastname = $results['lastname'];
+        $name = ucwords($results['name']);
+        $lastname = ucwords($results['lastname']);
         $fecha_created = $results['fecha_creacion'];
         $time_first = $results['first_time'];
+
+
         
     }
 }

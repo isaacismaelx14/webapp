@@ -2,6 +2,7 @@
 
 session_start();
 
+require '../resources/complements/var.php';
 require '../database.php';
 
 if (isset($_SESSION['user_id'])) {
@@ -15,11 +16,13 @@ if (isset($_SESSION['user_id'])) {
 
     if(!empty($results)){
         $user = $results;
-        $username = $results['user'];
+        $username = ucwords($results['user']);
         $emaild = $results['email'];
-        $name = $results['name'];
-        $lastname = $results['lastname'];
+        $name = ucwords($results['name']);
+        $lastname = ucwords($results['lastname']);
         $time_first = $results['first_time'];
+
+     
     }
 }
 
@@ -40,7 +43,7 @@ if(empty($user)){
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>Welcome</title>
+    <title>Bienvenido</title>
 
     <!-- Bootstrap core CSS -->
     <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -55,14 +58,8 @@ if(empty($user)){
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
       <header class="masthead mb-auto">
         <div class="inner">
-          <h3 class="masthead-brand">WebApp Agenda</h3>
+          <h3 class="masthead-brand"><?= $app_name ?></h3>
     <ul class="nav justify-content-end">
-      <li class="nav-item">
-      <a class="nav-link disabled" href="../">Home</a>
-      </li>
-      <li class="nav-item">
-      <a class="nav-link " href="user_information/">Hi, <?= $username?></a>
-      </li>
       <li class="nav-item">
       <a class="nav-link" href="../logout.php">Logout</a>
        </li>
@@ -71,16 +68,17 @@ if(empty($user)){
       </header>
 
       <main role="main" class="inner cover">
-        <h1 class="cover-heading">Hi <?= $name?> <?= $lastname?>, is good look you </h1>
-        <p class="lead">Bienvenido a tu agenda personal. WebApp Agenda te ayudara a organizar tu tiempo</p>
-        <p class="lead">
-          <a href="set.php" class="btn btn-lg btn-secondary">Start</a>
+        <h1 class="cover-heading">Hola <?= $name?> <?= $lastname?>, es bueno verte por aqui. </h1> <br>
+        <p class="lead">Bienvenido a tu agenda personal, una agenda interectiva y moderna donde organizar 
+        todas tus tareas diarias, reuniones, ideas, proyectos y todo aquello que sabemos que es importante para ti.</p>
+        <br> <p class="lead">
+          <a href="set.php" class="btn btn-lg btn-secondary">¡Empecemos!</a>
         </p>
       </main>
 
       <footer class="mastfoot mt-auto">
         <div class="inner">
-          <p>sitio creado by Isaac Martinez.</p>
+          <p></p>
         </div>
       </footer>
     </div>
@@ -111,7 +109,7 @@ if(empty($user)){
     <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
-    <title>TasksBoards</title>
+    <title>TasksBoards || </title>
 
     <!-- Bootstrap core CSS -->
     <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -160,7 +158,6 @@ if(empty($user)){
               <p id="ampm" class="ampm"></p>
               <p id="seconds" class="seconds"></p>
             </div>
-
           </div>
         </div>
       </div>

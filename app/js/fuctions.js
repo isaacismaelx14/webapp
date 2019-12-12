@@ -52,4 +52,6 @@
     hourUpdate();
     var interval = setInterval(hourUpdate, 1000);
 
+    
+
 }())

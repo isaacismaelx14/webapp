@@ -1,28 +1,24 @@
 <?php 
-   require '../database.php'; 
-   require '../resources/complements/var.php';
-   
-   $message = '';
-   $messageError = '';
-   $fechaActualHora = date('d-m-Y H:i:s');
-   $fechaActual = date('d-m-Y');
- 
-      if(!empty($_POST['user']) && !empty($_POST['email']) && !empty($_POST['password'])){
-        $sql = "INSERT INTO users (name,lastname,user, email, password) VALUES (:name,:lastname,:user,:email,:password)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':name', $_POST['name']);
-        $stmt->bindParam(':lastname', $_POST['lastname']);
-        $stmt->bindParam(':user', $_POST['user']);
-        $stmt->bindParam(':email', $_POST['email']);
-        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-        $stmt->bindParam(':password', $password); 
-
-        if ($stmt->execute()) {
-            $message = 'Successfully created new user';
-        }else{
-            $messageError = 'Sorry there must have been an issue creating  your account, try later'; 
-        }
-       }
+   require '../../../database.php'; 
+   require '../../../resources/complements/var.php';
+   session_start();
+if (isset($_SESSION['user_id'])) {
+    $records = $conn->prepare('SELECT id, name, lastname, user, email, password, fecha_creacion, first_time FROM users WHERE id = :id');
+    $records->bindParam(':id', $_SESSION['user_id']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
+    $user = null;
+    
+    if(!empty($results)){
+        $user = $results;
+        $username = ucwords($results['user']);
+        $emaild = $results['email'];
+        $name = ucwords($results['name']);
+        $lastname = ucwords($results['lastname']);
+        $fecha_created = $results['fecha_creacion'];
+        $time_first = $results['first_time'];
+    }
+}
 
 ?>
 
@@ -39,7 +35,7 @@
     <title>Checkout example for Bootstrap</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="form-validation.css" rel="stylesheet">
@@ -73,14 +69,14 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="firstName">First name</label>
-                <input type="text" name="name" class="form-control" id="firstName" placeholder="John" value="" required>
+                <input type="text" name="name" class="form-control" id="firstName" placeholder="John" value="<?= $name ?>" required>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="lastName">Last name</label>
-                <input type="text" name="lastname" class="form-control" id="lastName" placeholder="Newton" value="" required>
+                <input type="text" name="lastname" class="form-control" id="lastName" placeholder="Newton" value="<?= $lastname ?>" required>
                 <div class="invalid-feedback">
                   Valid last name is required.
                 </div>
@@ -93,7 +89,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-                <input type="user" name="user" class="form-control" id="username" placeholder="Username" required>
+                <input type="user" name="user" class="form-control" id="username" placeholder="Username" value="<?= $username ?>" required>
                 <div class="invalid-feedback" style="width: 100%;">
                   Your username is required.
                 </div>
@@ -102,7 +98,7 @@
 
             <div class="mb-3">
               <label for="email">Email <span class="text-muted"></span></label>
-              <input type="email" name="email" class="form-control" id="email" placeholder="you@example.com" required>
+              <input type="email" name="email" class="form-control" id="email" placeholder="you@example.com" value="<?= $emaild ?>" required>
               <div class="invalid-feedback">
                 Please enter a valid e-mail address.
               </div>
@@ -175,10 +171,5 @@
       })();
     </script>
 
-<script language="JavaScript">
-function spc(){
-if (document.form1.user.value.split(' ').length>=2) confirm("username must not contain blank spaces");
-}
-</script> 
   </body>
 </html>
