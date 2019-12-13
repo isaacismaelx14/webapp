@@ -81,18 +81,18 @@ if (isset($_SESSION['user_id'])) {
           <h4 class="mb-3">User Information</h4>
 
           <!-- Form begining-->
-          <form name= "addForm" method="post" class="needs-validation" action="index.php" >
+          <form name= "addForm" method="post" class="was-validated" onsubmit=" returin validar();" action="index.php" >
             <div class="row">
-              <div class="col-md-6 mb-3">
+              <div class="col-md-6 mb-3 form-group">
                 <label for="firstName">First name</label>
-                <input type="text" name="name" class="form-control" id="firstName" placeholder="John" value="<?= $name ?>" required>
+                <input type="text" name="name" class="form-control" id="firstName" placeholder="John" value="<?= $name ?>" onkeypress="return soloLetras2(event)" required>
                 <div class="invalid-feedback">
                   Valid first name is required.
                 </div>
               </div>
               <div class="col-md-6 mb-3">
                 <label for="lastName">Last name</label>
-                <input type="text" name="lastname" class="form-control" id="lastName" placeholder="Newton" value="<?= $lastname ?>" required>
+                <input type="text" name="lastname" class="form-control" id="lastName" placeholder="Newton" value="<?= $lastname ?>" onkeypress="return soloLetras2(event)" required>
                 <div class="invalid-feedback">
                   Valid last name is required.
                 </div>
@@ -105,7 +105,10 @@ if (isset($_SESSION['user_id'])) {
                 <div class="input-group-prepend">
                   <span class="input-group-text">@</span>
                 </div>
-                <input type="user" name="user" class="form-control" id="username" placeholder="Username" value="<?= $username ?>" required>
+                <input type="user" name="user" class="form-control" id="username" placeholder="Username" value="<?= $username ?>" onkeypress="return soloLetras(event)" required>
+                <div class="valid-feedback">
+                Valid
+                </div>
                 <div class="invalid-feedback" style="width: 100%;">
                   Your username is required.
                 </div>
@@ -114,7 +117,7 @@ if (isset($_SESSION['user_id'])) {
 
             <div class="mb-3">
               <label for="email">Email <span class="text-muted"></span></label>
-              <input type="email" name="email" class="form-control" id="email" placeholder="you@example.com" value="<?= $emaild ?>" required>
+              <input type="email" name="email" class="form-control" id="email" placeholder="you@example.com" value="<?= $emaild ?>" onkeypress="return soloLetras3(event)" required>
               <div class="invalid-feedback">
                 Please enter a valid e-mail address.
               </div>
@@ -122,24 +125,22 @@ if (isset($_SESSION['user_id'])) {
 
             <div class="mb-3">
               <label for="password">password</label>
-              <input type="password" name="password" class="form-control" id="password"  required>
-              <div class="invalid-feedback">
-                Please enter a password
+              <input type="password" name="password" class="form-control" id="password" onClick="validar();" required>
+              <div class="alert">
               </div>
             </div>
 
             <div class="mb-3">
               <label for="password">repeat password</label>
               <input type="password" class="form-control" id="repeat_password" name="repeat_password" required>
-              <div class="invalid-feedback">
-                Please repeat the password
+              <div class="aletRepeat">
               </div>
             </div> 
 
 
            
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" onClick="validar();" type="button">Continue to signup</button>
+            <button class="btn btn-primary btn-lg btn-block"  type="submit">Continue to signup</button>
             <span class="mb-3">*I already have an account and I want <a href="../login/">login</a></spanp>
           </form>
 

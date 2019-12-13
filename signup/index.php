@@ -69,16 +69,15 @@
         <div class="col-md-8 order-md-1">
           <h4 class="mb-3">User Information</h4>
          
-          <form class="needs-validation" action="index.php" method="post">
+          <form class="needs-validation " action="index.php" method="post">
             <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="firstName">First name</label>
+              <div class="col-md-6 mb-3 form-group">
+                <label for="firstName" >First name</label>
                 <input type="text" name="name" class="form-control" id="firstName" placeholder="John" value="" required>
-                <div class="invalid-feedback">
-                  Valid first name is required.
+                <div class="alertNamer">
                 </div>
               </div>
-              <div class="col-md-6 mb-3">
+              <div class="col-md-6 mb-3 form-group form-check">
                 <label for="lastName">Last name</label>
                 <input type="text" name="lastname" class="form-control" id="lastName" placeholder="Newton" value="" required>
                 <div class="invalid-feedback">
@@ -127,7 +126,7 @@
 
            
             <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit" action="signup.php">Continue to signup</button>
+            <button class="btn btn-primary btn-lg btn-block" type="button" action="signup.php">Continue to signup</button>
             <span class="mb-3">*I already have an account and I want <a href="../login/">login</a></spanp>
           </form>
 

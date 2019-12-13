@@ -1,9 +1,9 @@
 function validar(){
     //alert("working!");
     var formulario = document.addForm;
-
+    /*
     if(formulario.name.value.length == 0){
-        document.getElementById('alert').innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">The name can not are null<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div> ';
+        document.getElementById('alertName').innerHTML = '<div class="invalid-feedback">The name can not are null</div> ';
         formulario.name.focus();
         return false;
     }else{
@@ -33,35 +33,76 @@ function validar(){
     }else{
         document.getElementById('alert').innerHTML = "";
     }
-
-
-    if(formulario.password.value.length == 0|| formulario.repeat_password.value.length == 0){
-        document.getElementById('alert').innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">The passwords can not are null<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div> ';
-        return false;
-    }else{
-
-        if(formulario.password.value != formulario.repeat_password.value){
-            document.getElementById('alert').innerHTML = '<div class="alert alert-danger alert-dismissible fade show" role="alert">The Passwords do not match <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div> ';
-            formulario.repeat_password.focus();
-            return false;
-        }else{
-            document.getElementById('alert').innerHTML = "";
+ */
+formulario.password.addEventListener("keyup", function()
+{   
     
-    }
-    }
+    intervalo = setInterval(function(){ //Y vuelve a iniciar
+        alert ("Has dejado de escribir"); //Cumplido el tiempo, se muestra el mensaje
+        clearInterval(intervalo); //Limpio el intervalo
+    }, 1500);
+}, false);
+
+clearInterval(intervalo); //Al escribir, limpio el intervalo
+
     
-    formulario.submit();
+   // formulario.submit();
 }
-/*
-var name, lastname, user, email, password, repeat_password;
-name = document.getElementById('firstName');
-lastname = document.getElementById('lastName');
-user = document.getElementById('username');
-email = document.getElementById('email');
-password = document.getElementById('password');
-repeat_password = document.getElementById('repeat_password');
 
 
+ function soloLetras(e){
+     key = e.keyCode || e.which;
+     teclado = String.fromCharCode(key).toLowerCase();
+     letras="_abcdefghijklmnoprstuvwxyz1234567890";
+     especiales ="8-37-38-95";
+     teclado_especial = false;
 
+     for(var i in especiales){
+         if(key==especiales[i]){
+             teclado_especial = true;
+             break;
+         }
 
-*/
+         if(letras.indexOf(teclado)==-1 && !teclado_especial){
+            return false;
+         }
+     }
+ }
+
+ function soloLetras2(e){
+    key = e.keyCode || e.which;
+    teclado = String.fromCharCode(key).toLowerCase();
+    letras="abcdefghijklmnñoprstuvwxyz";
+    especiales ="8-37-38-95";
+    teclado_especial = false;
+
+    for(var i in especiales){
+        if(key==especiales[i]){
+            teclado_especial = true;
+            break;
+        }
+
+        if(letras.indexOf(teclado)==-1 && !teclado_especial){
+           return false;
+        }
+    }
+}
+
+function soloLetras3(e){
+    key = e.keyCode || e.which;
+    teclado = String.fromCharCode(key).toLowerCase();
+    letras="@.abcdefghijklmnñoprstuvwxyz1234567890_-";
+    especiales ="8-37-38-95";
+    teclado_especial = false;
+
+    for(var i in especiales){
+        if(key==especiales[i]){
+            teclado_especial = true;
+            break;
+        }
+
+        if(letras.indexOf(teclado)==-1 && !teclado_especial){
+           return false;
+        }
+    }
+}
